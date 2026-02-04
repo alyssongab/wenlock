@@ -104,6 +104,7 @@ export class UsersService {
             id: userRequest.id,
             nome: userRequest.nome,
             email: userRequest.email,
+            matricula: userRequest.matricula,
             createdAt: userRequest.created_at
         };
     }

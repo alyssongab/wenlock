@@ -47,6 +47,7 @@ export class PaginationQueryDto {
 export class UserResponseDto  {
     id: number;
     nome: string;
+    matricula: number;
     email: string;
     createdAt: Date
 }
