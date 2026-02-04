@@ -32,18 +32,16 @@ export const Sidebar = ({ collapsed, onToggleCollapse }: SidebarProps) => {
     },
   ];
 
-  // Update active menu based on current route
+
   useEffect(() => {
     const currentPath = location.pathname;
     
-    // Check if path matches a menu item
     const matchedMenuItem = menuItems.find(item => item.path === currentPath);
     if (matchedMenuItem) {
       setActiveMenu(matchedMenuItem.id);
       return;
     }
 
-    // Check if path matches a submenu item
     for (const item of menuItems) {
       if (item.submenu) {
         const matchedSubitem = item.submenu.find(sub => sub.path === currentPath);
