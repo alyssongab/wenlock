@@ -1,0 +1,39 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #F3F3F3;
+}
+
+.layout-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.layout-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.page-title-outside {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0D1931;
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+
+.layout-content {
+  flex: 1;
+  overflow: hidden;
+  padding: 24px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 4px #00000029;
+  border-radius: 5px;
+  opacity: 1;
+}
