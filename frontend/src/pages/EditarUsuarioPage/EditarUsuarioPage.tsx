@@ -82,7 +82,6 @@ export const EditarUsuarioPage = () => {
       return false;
     }
 
-    // Validate password (now required)
     if (!formData.senha || formData.senha.length < 6 || !/^[a-zA-Z0-9]+$/.test(formData.senha)) {
       return false;
     }
