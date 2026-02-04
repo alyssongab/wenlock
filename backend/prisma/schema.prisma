@@ -20,5 +20,6 @@ model Usuario {
   email       String    @db.VarChar(40)   @unique
   senha       String    @db.VarChar(32)  
   created_at  DateTime  @default(now())
+  updated_at  DateTime?  
   @@map("usuarios")
 }
