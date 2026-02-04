@@ -16,6 +16,7 @@ datasource db {
 model Usuario {
   id        Int       @id               @default(autoincrement())
   nome      String    @db.VarChar(30)   
+  matricula Int       
   email     String    @db.VarChar(40)
   senha     String      
 
