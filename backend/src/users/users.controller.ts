@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, Patch, Param, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Patch, Param, ParseIntPipe, Delete, HttpCode } from '@nestjs/common';
 import { UserRequestDto, PaginationQueryDto, PaginatedUserResponseDto, UserResponseDto } from './dto/users.dto';
 import { UsersService } from './users.service';
 
@@ -26,6 +26,12 @@ export class UsersController {
     @Patch(':id')
     async update(@Param('id', ParseIntPipe) id: number, @Body() data: UserRequestDto): Promise<UserResponseDto> {
         return this.userService.update(id, data);
+    }
+
+    @Delete(':id')
+    @HttpCode(204)
+    async delete(@Param('id', ParseIntPipe) id: number) {
+        return this.userService.delete(id);
     }
 
 }

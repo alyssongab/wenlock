@@ -87,7 +87,17 @@ export class UsersService {
             }
             throw error;
         }
-    } 
+    }
+    
+    async delete(id: number): Promise<void> {
+        const user = await this.findOne(id);
+        if(!user) {
+            throw new NotFoundException(`Usuário com ID ${id} não encontrado.`);
+        }
+        await this.prisma.usuario.delete({
+            where: { id: id }
+        });
+    }
 
     private userToResponse(userRequest: Usuario): UserResponseDto{
         return {
