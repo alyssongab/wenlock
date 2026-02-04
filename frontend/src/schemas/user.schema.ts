@@ -14,7 +14,7 @@ export const createUserSchema = z.object({
     .regex(/^[a-zA-ZÀ-ÿ\s]+$/, 'Nome deve conter apenas letras e espaços'),
   
   matricula: z
-    .number()
+    .number("Matrícula deve conter apenas números")
     .int('A matrícula deve ser um número inteiro')
     .min(1000, 'A matrícula deve ter no mínimo 4 dígitos')
     .max(9999999999, 'A matrícula deve ter no máximo 10 dígitos'),

@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { userService, User } from '../../services/user-service';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './UsuariosPage.css';
 
 export const UsuariosPage = () => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -107,7 +109,7 @@ export const UsuariosPage = () => {
             </button>
           )}
         </div>
-        <button className="btn-cadastrar">
+        <button className="btn-cadastrar" onClick={() => navigate('/usuarios/cadastro')}>
           + Cadastrar Usuário
         </button>
       </div>
