@@ -3,6 +3,7 @@ import { Layout } from './components/Layout/Layout';
 import { HomePage } from './pages/HomePage/HomePage';
 import { UsuariosPage } from './pages/UsuariosPage/UsuariosPage';
 import { CadastroUsuarioPage } from './pages/CadastroUsuarioPage/CadastroUsuarioPage';
+import { EditarUsuarioPage } from './pages/EditarUsuarioPage/EditarUsuarioPage';
 import './App.css';
 
 function AppContent() {
@@ -15,6 +16,9 @@ function AppContent() {
       case '/usuarios/cadastro':
         return 'Cadastro de Usuário';
       default:
+        if (location.pathname.startsWith('/usuarios/editar/')) {
+          return 'Editar Usuário';
+        }
         return 'Home';
     }
   };
@@ -25,6 +29,7 @@ function AppContent() {
         <Route path="/" element={<HomePage />} />
         <Route path="/usuarios" element={<UsuariosPage />} />
         <Route path="/usuarios/cadastro" element={<CadastroUsuarioPage />} />
+        <Route path="/usuarios/editar/:id" element={<EditarUsuarioPage />} />
       </Routes>
     </Layout>
   );

@@ -49,7 +49,9 @@ export class UserResponseDto  {
     nome: string;
     matricula: number;
     email: string;
-    createdAt: Date
+    senha: string;
+    createdAt: Date;
+    updatedAt: Date | null;
 }
 
 export class PaginatedUserResponseDto {

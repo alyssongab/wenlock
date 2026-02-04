@@ -105,7 +105,9 @@ export class UsersService {
             nome: userRequest.nome,
             email: userRequest.email,
             matricula: userRequest.matricula,
-            createdAt: userRequest.created_at
+            senha: userRequest.senha,
+            createdAt: userRequest.created_at,
+            updatedAt: userRequest.updated_at
         };
     }
 }

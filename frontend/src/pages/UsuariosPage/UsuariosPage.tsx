@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userService, User } from '../../services/user-service';
 import { ToastContainer, toast } from 'react-toastify';
+import { VisualizarUsuarioDrawer } from '../../components/VisualizarUsuarioDrawer/VisualizarUsuarioDrawer';
 import 'react-toastify/dist/ReactToastify.css';
 import './UsuariosPage.css';
 
@@ -15,6 +16,7 @@ export const UsuariosPage = () => {
   const [total, setTotal] = useState(0);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [userToDelete, setUserToDelete] = useState<number | null>(null);
+  const [viewUserId, setViewUserId] = useState<number | null>(null);
 
   const fetchUsers = async () => {
     try {
@@ -88,6 +90,14 @@ export const UsuariosPage = () => {
     setUserToDelete(null);
   };
 
+  const handleViewClick = (id: number) => {
+    setViewUserId(id);
+  };
+
+  const handleCloseDrawer = () => {
+    setViewUserId(null);
+  };
+
   const totalPages = Math.ceil(total / limit);
   const hasUsers = users.length > 0;
 
@@ -131,10 +141,18 @@ export const UsuariosPage = () => {
                   <td>{user.nome}</td>
                   <td>
                     <div className="action-buttons">
-                      <button className="action-btn view" title="Visualizar">
+                      <button 
+                        className="action-btn view" 
+                        title="Visualizar"
+                        onClick={() => handleViewClick(user.id!)}
+                      >
                         <img src="/eye-icon.svg" alt="View" />
                       </button>
-                      <button className="action-btn edit" title="Editar">
+                      <button 
+                        className="action-btn edit" 
+                        title="Editar"
+                        onClick={() => navigate(`/usuarios/editar/${user.id}`)}
+                      >
                         <img src="/edit-icon.svg" alt="Edit" />
                       </button>
                       <button 
@@ -230,6 +248,10 @@ export const UsuariosPage = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {viewUserId && (
+        <VisualizarUsuarioDrawer userId={viewUserId} onClose={handleCloseDrawer} />
       )}
 
       <ToastContainer />
