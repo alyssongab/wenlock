@@ -14,11 +14,11 @@ datasource db {
 }
 
 model Usuario {
-  id        Int       @id               @default(autoincrement())
-  nome      String    @db.VarChar(30)   
-  matricula Int       
-  email     String    @db.VarChar(40)
-  senha     String    @db.VarChar(32)  
-
+  id          Int       @id               @default(autoincrement())
+  nome        String    @db.VarChar(30)   
+  matricula   Int                         @unique
+  email       String    @db.VarChar(40)   @unique
+  senha       String    @db.VarChar(32)  
+  created_at  DateTime  @default(now())
   @@map("usuarios")
 }
